@@ -1,18 +1,37 @@
 defmodule Haqt do
-  @moduledoc """
-  Documentation for Haqt.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(type, args) do
+    import Supervisor.Spec, warn: false
 
-  ## Examples
+    children = [
+      worker(Haqt.Web, [])
+    ]
 
-      iex> Haqt.hello
-      :world
+    opts = [strategy: :one_for_one, name: Haqt.Supervisor]
+    Supervisor.start_link(children, opts)
+  end
+end
 
-  """
-  def hello do
-    :world
+defmodule Haqt.Web do
+  use Plug.Router
+  require Logger
+
+  plug Plug.Logger
+  plug :match
+  plug :dispatch
+
+  def init(options) do
+    options
+  end
+
+  def start_link do
+    {:ok, _} = Plug.Adapters.Cowboy.http Haqt.Web, []
+  end
+
+  get "/" do
+    conn
+    |> send_resp(200, "ok")
+    |> halt
   end
 end
