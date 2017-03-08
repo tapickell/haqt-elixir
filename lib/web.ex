@@ -16,19 +16,19 @@ defmodule Haqt.Web do
 
   get "/attendee_count" do
     conn
-    |> send_resp(200, 42)
+    |> send_resp(200, "42")
     |> halt
   end
 
   get "/speaker_count" do
     conn
-    |> send_resp(200, 4)
+    |> send_resp(200, "4")
     |> halt
   end
 
   get "/total_count" do
     conn
-    |> send_resp(200, 44)
+    |> send_resp(200, "44")
     |> halt
   end
 
