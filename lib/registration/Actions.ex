@@ -1,14 +1,14 @@
 defmodule Haqt.Registration.Actions do
 
   def count_attendees do
-    {:ok, "42"}
+    {:ok, "#{Haqt.Registration.Queries.number_of_attendees}"}
   end
 
   def count_speakers do
-    {:ok, "6"}
+    {:ok, "#{Haqt.Registration.Queries.number_of_speakers}"}
   end
 
   def count_total do
-    {:ok, "48"}
+    {:ok, "#{Haqt.Registration.Queries.number_of_registrations}"}
   end
 end
