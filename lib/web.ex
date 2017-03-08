@@ -15,20 +15,26 @@ defmodule Haqt.Web do
   end
 
   get "/attendee_count" do
+    {:ok, count} = Haqt.Registration.Handler.count_attendees
+
     conn
-    |> send_resp(200, "42")
+    |> send_resp(200, count)
     |> halt
   end
 
   get "/speaker_count" do
+    {:ok, count} = Haqt.Registration.Handler.count_speakers
+
     conn
-    |> send_resp(200, "4")
+    |> send_resp(200, count)
     |> halt
   end
 
   get "/total_count" do
+    {:ok, count} = Haqt.Registration.Handler.count_total
+
     conn
-    |> send_resp(200, "44")
+    |> send_resp(200, count)
     |> halt
   end
 
