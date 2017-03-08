@@ -14,8 +14,10 @@ defmodule Haqt.Web do
     {:ok, _} = Plug.Adapters.Cowboy.http Haqt.Web, []
   end
 
+  # these should take events match on eventType
+  # and then call the appropriate actions
   get "/attendee_count" do
-    {:ok, count} = Haqt.Registration.Handler.count_attendees
+    {:ok, count} = Haqt.Registration.Actions.count_attendees
 
     conn
     |> send_resp(200, count)
@@ -23,7 +25,7 @@ defmodule Haqt.Web do
   end
 
   get "/speaker_count" do
-    {:ok, count} = Haqt.Registration.Handler.count_speakers
+    {:ok, count} = Haqt.Registration.Actions.count_speakers
 
     conn
     |> send_resp(200, count)
@@ -31,7 +33,7 @@ defmodule Haqt.Web do
   end
 
   get "/total_count" do
-    {:ok, count} = Haqt.Registration.Handler.count_total
+    {:ok, count} = Haqt.Registration.Actions.count_total
 
     conn
     |> send_resp(200, count)

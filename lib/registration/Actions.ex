@@ -1,4 +1,4 @@
-defmodule Haqt.Registration.Handler do
+defmodule Haqt.Registration.Actions do
 
   def count_attendees do
     {:ok, "42"}
