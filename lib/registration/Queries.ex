@@ -1,14 +1,19 @@
 defmodule Haqt.Registration.Queries do
   def number_of_attendees do
-    24
+    registrations
+    |> Enum.filter(fn(reg) -> reg.registration_type == "attendee" end)
+    |> Enum.count
   end
 
   def number_of_speakers do
-    9
+    registrations
+    |> Enum.filter(fn(reg) -> reg.registration_type == "speaker" end)
+    |> Enum.count
   end
 
   def number_of_registrations do
-    24 + 9
+    registrations
+    |> Enum.count
   end
 
   defp registrations do
