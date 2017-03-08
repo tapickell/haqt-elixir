@@ -1,0 +1,13 @@
+* Event Store Idea
+** Conference Event Registration
+*** takes in registration events
+**** attendee registration
+**** speaker registration
+*** stores event in whatever persistence layer
+**** DB table
+**** NoSQL store
+**** Process store
+*** rolls up registration count
+**** attendees registered
+**** speakers registered
+**** total registered
