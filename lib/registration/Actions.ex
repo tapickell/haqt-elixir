@@ -1,14 +1,23 @@
 defmodule Haqt.Registration.Actions do
 
   def count_attendees do
-    {:ok, "#{Haqt.Registration.Queries.number_of_attendees}"}
+    try_query &Haqt.Registration.Queries.number_of_attendees/0
   end
 
   def count_speakers do
-    {:ok, "#{Haqt.Registration.Queries.number_of_speakers}"}
+    try_query &Haqt.Registration.Queries.number_of_speakers/0
   end
 
   def count_total do
-    {:ok, "#{Haqt.Registration.Queries.number_of_registrations}"}
+    try_query &Haqt.Registration.Queries.number_of_registrations/0
+  end
+
+  defp try_query(query) do
+    try do
+      number = query.()
+      {:ok, Integer.to_string(number)}
+    rescue
+      _ -> {:error, "Nada"}
+    end
   end
 end
