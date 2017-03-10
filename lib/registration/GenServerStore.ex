@@ -1,8 +1,8 @@
 defmodule Haqt.Registration.GenServerStore do
   use GenServer
 
-  def start_link do
-    GenServer.start_link(__MODULE__, :ok, [])
+  def start_link(options \\ []) do
+    GenServer.start_link(__MODULE__, [], options)
   end
 
   def register(server, registration) do
@@ -18,7 +18,7 @@ defmodule Haqt.Registration.GenServerStore do
   end
 
   #server callbacks
-  def init(:ok) do
+  def init(_) do
     {:ok, []}
   end
 
