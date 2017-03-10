@@ -1,0 +1,46 @@
+defmodule Haqt.Registration.GenServerStore do
+  use GenServer
+
+  def start_link do
+    GenServer.start_link(__MODULE__, :ok, [])
+  end
+
+  def register(server, registration) do
+    GenServer.call(server, {:register, registration})
+  end
+
+  def unregister(server, registration) do
+    GenServer.call(server, {:unregister, registration})
+  end
+
+  def registrations(server) do
+    GenServer.call(server, {:registrations})
+  end
+
+  #server callbacks
+  def init(:ok) do
+    {:ok, []}
+  end
+
+  def handle_call({:registrations}, _from, state) do
+    {:reply, state, state}
+  end
+
+  def handle_call({:register, registration}, _from, state) do
+    case Enum.member?(state, registration) do
+      true ->
+        {:reply, state}
+      false ->
+        {:reply, :ok, [registration | state]}
+    end
+  end
+
+  def handle_call({:unregister, registration}, _from, state) do
+    case Enum.member?(state, registration) do
+      true ->
+        {:reply, {:ok, registration}, List.delete(state, registration)}
+      false ->
+        {:reply, :ok, [registration | state]}
+    end
+  end
+end
