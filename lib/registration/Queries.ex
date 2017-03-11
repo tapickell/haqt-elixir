@@ -28,6 +28,7 @@ defmodule Haqt.Registration.Queries do
   end
 
   defp registrations do
-    GenServerStore.registrations(Registrations)
+    {:ok, registrations} = GenServerStore.registrations(Registrations)
+    registrations
   end
 end

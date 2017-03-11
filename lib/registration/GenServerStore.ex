@@ -23,15 +23,15 @@ defmodule Haqt.Registration.GenServerStore do
   end
 
   def handle_call({:registrations}, _from, state) do
-    {:reply, state, state}
+    {:reply, {:ok, state}, state}
   end
 
   def handle_call({:register, registration}, _from, state) do
     case Enum.member?(state, registration) do
       true ->
-        {:reply, state}
+        {:reply, {:ok, registration}, state}
       false ->
-        {:reply, :ok, [registration | state]}
+        {:reply, {:ok, registration}, [registration | state]}
     end
   end
 
@@ -40,7 +40,7 @@ defmodule Haqt.Registration.GenServerStore do
       true ->
         {:reply, {:ok, registration}, List.delete(state, registration)}
       false ->
-        {:reply, :ok, [registration | state]}
+        {:reply, {:ok, registration}, state}
     end
   end
 end

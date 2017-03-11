@@ -7,6 +7,10 @@ defmodule Haqt.Registration.Handler do
         Haqt.Registration.Actions.count_speakers
       %{"eventType" => "total_count"} ->
         Haqt.Registration.Actions.count_total
+      %{"eventType" => "register"} ->
+        Haqt.Registration.Actions.register(event.registration)
+      %{"eventType" => "unregister"} ->
+        Haqt.Registration.Actions.unregister(event.registration)
       %{"eventType" => _} ->
         {:error, "Nope"}
     end
