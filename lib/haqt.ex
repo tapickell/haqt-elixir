@@ -6,7 +6,7 @@ defmodule Haqt do
 
     children = [
       worker(Haqt.Web, []),
-      worker(Haqt.Registration.GenServerStore, [[name: Registrations]])
+      worker(Haqt.Registration.Store, [[name: Registrations]])
     ]
 
     opts = [strategy: :one_for_one, name: Haqt.Supervisor]

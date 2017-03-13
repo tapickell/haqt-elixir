@@ -1,5 +1,5 @@
 defmodule Haqt.Registration.Queries do
-  alias Haqt.Registration.GenServerStore
+  alias Haqt.Registration.Store
 
   # error handle around type key
   def number_of_attendees do
@@ -20,15 +20,15 @@ defmodule Haqt.Registration.Queries do
   end
 
   def register(registration) do
-    GenServerStore.register(Registrations, registration)
+    Store.register(Registrations, registration)
   end
 
   def unregister(registration) do
-    GenServerStore.unregister(Registrations, registration)
+    Store.unregister(Registrations, registration)
   end
 
   defp registrations do
-    {:ok, registrations} = GenServerStore.registrations(Registrations)
+    {:ok, registrations} = Store.registrations(Registrations)
     registrations
   end
 end

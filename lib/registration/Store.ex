@@ -1,4 +1,4 @@
-defmodule Haqt.Registration.GenServerStore do
+defmodule Haqt.Registration.Store do
   use GenServer
 
   def start_link(options \\ []) do
