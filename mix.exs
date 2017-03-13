@@ -32,6 +32,7 @@ defmodule Haqt.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
+      {:atomic_map, "~> 0.8"},
       {:cowboy, "~> 1.1"},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:plug, "~> 1.3"},

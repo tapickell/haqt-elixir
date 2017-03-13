@@ -1,6 +1,7 @@
 defmodule Haqt.Web do
   use Plug.Router
   require Logger
+  alias Haqt.Registration.Handler
 
   plug Plug.Logger
   plug :match
@@ -20,7 +21,7 @@ defmodule Haqt.Web do
 
   def response({:ok, resp}, conn) do
     conn
-    |> send_resp(200, resp)
+    |> send_resp(200, inspect(resp))
     |> halt
   end
 
@@ -31,7 +32,9 @@ defmodule Haqt.Web do
   end
 
   post "/registration_event" do
-    Haqt.Registration.Handler.handle_event_type(conn.body_params)
+    conn.body_params
+    |> AtomicMap.convert
+    |> Handler.handle_event_type
     |> response(conn)
   end
 

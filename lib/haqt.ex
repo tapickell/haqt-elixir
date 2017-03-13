@@ -5,8 +5,8 @@ defmodule Haqt do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Haqt.Web, []),
-      worker(Haqt.Registration.Store, [[name: Registrations]])
+      worker(Haqt.Registration.Failover, []),
+      supervisor(Haqt.Registration.Supervisor, [])
     ]
 
     opts = [strategy: :one_for_one, name: Haqt.Supervisor]

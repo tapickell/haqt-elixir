@@ -3,17 +3,17 @@ defmodule Haqt.Registration.Handler do
 
   def handle_event_type(event) do
     case event do
-      %{"eventType" => "attendee_count"} ->
+      %{event_type: "attendee_count"} ->
         Actions.count_attendees
-      %{"eventType" => "speaker_count"} ->
+      %{event_type: "speaker_count"} ->
         Actions.count_speakers
-      %{"eventType" => "total_count"} ->
+      %{event_type: "total_count"} ->
         Actions.count_total
-      %{"eventType" => "register"} ->
+      %{event_type: "register"} ->
         Actions.register(event.registration)
-      %{"eventType" => "unregister"} ->
+      %{event_type: "unregister"} ->
         Actions.unregister(event.registration)
-      %{"eventType" => _} ->
+      %{event_type: _} ->
         {:error, "Nope"}
     end
   end

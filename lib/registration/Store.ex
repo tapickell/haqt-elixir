@@ -1,5 +1,6 @@
 defmodule Haqt.Registration.Store do
   use GenServer
+  alias Haqt.Registration.Failover
 
   def start_link(options \\ []) do
     GenServer.start_link(__MODULE__, [], options)
@@ -19,7 +20,7 @@ defmodule Haqt.Registration.Store do
 
   #server callbacks
   def init(_) do
-    {:ok, []}
+    {:ok, Failover.load}
   end
 
   def handle_call({:registrations}, _from, state) do
@@ -42,5 +43,9 @@ defmodule Haqt.Registration.Store do
       false ->
         {:reply, {:ok, registration}, state}
     end
+  end
+
+  def terminate(_reason, state) do
+    Failover.dump(state)
   end
 end

@@ -6,6 +6,7 @@ defmodule Haqt.Registration.Validations do
   end
 
   def validate_registration(_) do
+    IO.puts "Ivalid Registration"
     {:error, "Invalid Registration"}
   end
 end
