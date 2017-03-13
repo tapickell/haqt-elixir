@@ -1,13 +1,25 @@
 * Event Store Idea
 ** Conference Event Registration
-*** takes in registration events
-**** attendee registration
-**** speaker registration
+*** TODO takes events from different interfaces
+**** DONE Web API layer
+     CLOSED: [2017-03-13 Mon 18:09]
+**** TODO Message queue interface
+*** DONE takes in registration events
+     CLOSED: [2017-03-13 Mon 18:05]
+**** DONE attendee registration
+      CLOSED: [2017-03-13 Mon 18:05]
+**** DONE speaker registration
+      CLOSED: [2017-03-13 Mon 18:05]
 *** stores event in whatever persistence layer
 **** DB table
 **** NoSQL store
-**** Process store
-*** rolls up registration count
-**** attendees registered
-**** speakers registered
-**** total registered
+**** DONE Process store
+       CLOSED: [2017-03-13 Mon 18:05]
+*** DONE rolls up registration count
+      CLOSED: [2017-03-13 Mon 18:05]
+**** DONE attendees registered
+       CLOSED: [2017-03-13 Mon 18:05]
+**** DONE speakers registered
+       CLOSED: [2017-03-13 Mon 18:05]
+**** DONE total registered
+       CLOSED: [2017-03-13 Mon 18:05]
