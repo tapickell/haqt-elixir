@@ -33,6 +33,7 @@ defmodule Haqt.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.1"},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:plug, "~> 1.3"},
       {:poison, "~> 3.1"}
     ]
