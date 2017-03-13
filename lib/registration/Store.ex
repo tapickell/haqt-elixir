@@ -47,7 +47,6 @@ defmodule Haqt.Registration.Store do
   end
 
   def terminate(reason, state) do
-    IO.puts "Term called on Registration Store #{inspect reason}"
     Failover.dump(state)
   end
 end
