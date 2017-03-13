@@ -32,7 +32,8 @@ defmodule Haqt.Registration.Store do
       true ->
         {:reply, {:ok, registration}, state}
       false ->
-        {:reply, {:ok, registration}, [registration | state]}
+        new_state = [registration | state]
+        {:reply, {:ok, registration}, new_state}
     end
   end
 
@@ -45,7 +46,8 @@ defmodule Haqt.Registration.Store do
     end
   end
 
-  def terminate(_reason, state) do
+  def terminate(reason, state) do
+    IO.puts "Term called on Registration Store #{inspect reason}"
     Failover.dump(state)
   end
 end

@@ -7,7 +7,7 @@ defmodule Haqt.Registration.Supervisor do
 
   def init(:ok) do
     children = [
-      supervisor(Haqt.Registration.WebSupervisor, []),
+      supervisor(Haqt.WebSupervisor, []),
       worker(Haqt.Registration.Store, [[name: Registrations]])
     ]
 

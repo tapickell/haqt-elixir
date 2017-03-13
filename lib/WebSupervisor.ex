@@ -1,4 +1,4 @@
-defmodule Haqt.Registration.WebSupervisor do
+defmodule Haqt.WebSupervisor do
   use Supervisor
 
   def start_link do
