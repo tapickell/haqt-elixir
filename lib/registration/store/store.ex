@@ -46,7 +46,7 @@ defmodule Haqt.Registration.Store do
     end
   end
 
-  def terminate(reason, state) do
+  def terminate(_reason, state) do
     Failover.dump(state)
   end
 end
