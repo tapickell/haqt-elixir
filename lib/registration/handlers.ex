@@ -3,7 +3,6 @@ defmodule Haqt.Registration.Handler do
   alias Haqt.Registration.Actions
 
   def start_link(options \\ []) do
-    IO.puts "Reg Handler Start Link"
     GenServer.start_link(__MODULE__, [], options)
   end
 

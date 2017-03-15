@@ -5,8 +5,8 @@ defmodule Haqt do
     import Supervisor.Spec, warn: false
 
     children = [
-      supervisor(Haqt.Registration.HandlerSupervisor, []),
       worker(Haqt.Registration.Failover, []),
+      supervisor(Haqt.Registration.HandlerSupervisor, []),
       supervisor(Haqt.Registration.Supervisor, []),
     ]
 

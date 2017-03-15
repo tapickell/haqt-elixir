@@ -1,7 +1,6 @@
 defmodule Haqt.Registration.Queries do
   alias Haqt.Registration.Store
 
-  # error handle around type key
   def number_of_attendees do
     registrations()
     |> Enum.filter(fn(reg) -> reg.type == "attendee" end)
