@@ -8,7 +8,7 @@ defmodule Haqt.Registration.Supervisor do
   def init(:ok) do
     children = [
       supervisor(Haqt.WebSupervisor, []),
-      worker(Haqt.Registration.Store, [[name: Registrations]])
+      worker(Haqt.Registration.Store, [[name: Registrations]]),
     ]
 
     supervise(children, strategy: :one_for_one)

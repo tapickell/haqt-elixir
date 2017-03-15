@@ -15,8 +15,14 @@ defmodule Haqt.Web do
     options
   end
 
-  def start_link do
+  def start_link(options \\ []) do
     {:ok, _} = Plug.Adapters.Cowboy.http Haqt.Web, []
+  end
+
+  def response({:rcvd, resp}, conn) do
+    conn
+    |> send_resp(202, resp)
+    |> halt
   end
 
   def response({:ok, resp}, conn) do

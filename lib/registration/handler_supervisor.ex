@@ -1,4 +1,4 @@
-defmodule Haqt.WebSupervisor do
+defmodule Haqt.Registration.HandlerSupervisor do
   use Supervisor
 
   def start_link do
@@ -7,7 +7,7 @@ defmodule Haqt.WebSupervisor do
 
   def init(:ok) do
     children = [
-      worker(Haqt.Web, [[name: Web]])
+      worker(Haqt.Registration.Handler, [[name: Handler]])
     ]
 
     supervise(children, strategy: :one_for_one)
