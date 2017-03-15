@@ -43,15 +43,15 @@ defmodule Haqt.Registration.Handler do
   end
 
   def handle_call({:attendee_count}, _from, state) do
-    {:reply, {:ok, Actions.count_attendees}, state}
+    {:reply, Actions.count_attendees, state}
   end
 
   def handle_call({:speaker_count}, _from, state) do
-    {:reply, {:ok, Actions.count_speakers}, state}
+    {:reply, Actions.count_speakers, state}
   end
 
   def handle_call({:total_count}, _from, state) do
-    {:reply, {:ok, Actions.count_total}, state}
+    {:reply, Actions.count_total, state}
   end
 
   def handle_cast({:register, registration}, state) do
