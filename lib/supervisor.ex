@@ -11,6 +11,6 @@ defmodule Haqt.Registration.Supervisor do
       worker(Haqt.Registration.Store, [[name: Registrations]]),
     ]
 
-    supervise(children, strategy: :one_for_one)
+    supervise(children, strategy: :one_for_one )
   end
 end
