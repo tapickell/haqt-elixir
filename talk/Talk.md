@@ -40,3 +40,41 @@ HAQT Pattern
     Cleans up code base
     Puts modules files together
     Is outside of any framework
+
+* Feedback and Questions STL Elixir Talk 2017-21-03
+
+  Where does this pattern not work or not make sense?
+  Very good question, I would like to push the boundaries and try this pattern
+  in a lot of types of applications looking for times when it just does not make
+  sense. Then document the cases when this pattern is not a good choice.
+
+  CQRS Related? Yes there are some similarities and I have only seen some talks about
+  that pattern but never used it. I want to learn more about it so I can document
+  where it is different and where that pattern may make more sense than this one.
+
+  Handling errors when using cast, tell and forget types of calls in the app.
+  Currently I am not handling anything like this in the demo app. I don't like it
+  when people demo stuff and are like, "Don't do this in production" and I am
+  totally doing that now. It does not teach others what to do in production.
+  I want to update this to properly handle errors and such to teach.
+
+  Validation Layer? There could be a validation layer.
+  It is just like piping through another function really.
+  But adding a V. to H.A.Q.T. does not sound as cool, lol.
+  As with anything if you have a need for a full layer of
+  validations then go ahead and add them into the flow.
+
+  Handler with something like form data from UI.
+  This should demonstrate picking out values needed for actions
+  from the incoming data in the handler file.
+
+  Railties pattern for errors. Need to research this more to fully
+  understand the pattern, Craig gave a high level explanation but
+  will need to see some code to solidify the idea and see how it applies here.
+
+  Handling DB validation errors in query.
+  We should demonstrate when you are using a DB and you get and error from the DB call
+  like a constraint violation. How do we handle that and does it bubble up?
+
+  The Erik Meijer bit was not tied in very well and did not seem to add much.
+  Work on providing more info to back the layer and OSI comparison or pull the reference.
